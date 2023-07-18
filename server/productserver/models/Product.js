@@ -13,9 +13,6 @@ const ProdSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    qtyAvailable: {
-        type: Number,
-    },
 }, { 
     timestamps: true,
     writeConcern: {

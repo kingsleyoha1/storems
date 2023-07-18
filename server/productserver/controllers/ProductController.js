@@ -1,6 +1,7 @@
 const Product = require('../models/Product')
-const fs = require('fs')
-const path = require('path')
+const Producer = require('../producer')
+
+const producer = new Producer()
 
 module.exports = {
     fetchProducts: async(req, res) => {
@@ -20,6 +21,10 @@ module.exports = {
 
         try {
             const data = await Product.create({...req.body});
+
+            // PUBLISH PRODUCT-CREATE
+            await producer.publishMessage('create', {type: 'create', data})
+
             res.json(data)
 
         } catch(err) {
