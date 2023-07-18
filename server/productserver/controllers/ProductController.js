@@ -18,42 +18,35 @@ module.exports = {
             return res.status(400).send('Product title already exists, please try something else')
         }
 
-        // console.log(uploadPath)
-        
-        // Upload File
         try {
-            if(req.files) {
-    
-                const file = req.files.files;
-                const filename = '_' + new Date().getTime().toString() + file.name
-        
-                const uploadPath = path.join(__dirname, '../uploads/', filename)
-                
-                file.mv(uploadPath, async(err) => {
-                    if (err) {
-                      console.error('Error uploading file:', err);
-                      return res.status(500).json({ message: 'Failed to upload file' });
-                    }
-                
-                    const data = await Product.create({...req.body, image: filename});
-        
-                    // // broadcast to users
-                    // producer.sendMessage('Product', {method: 'create', data})
-        
-                    res.json(data)
-                });
-            }
-            else {
-                const data = await Product.create({...req.body});
-    
-                // // broadcast to users
-                // producer.sendMessage('Product', {method: 'create', data})
-    
-                res.json(data)
-            }
+            const data = await Product.create({...req.body});
+            res.json(data)
+
         } catch(err) {
             console.log("err",err)
             res.status(500).send('Unable to add product');
         }
     },
+    editProduct: async(req, res) => {
+        try {
+            await Product.findByIdAndUpdate(req.body._id, req.body)
+            res.send('Successfully updated product')
+        } catch(err) {
+            console.log("err",err)
+            res.status(500).send('Error updating product data');
+        }
+    },
+
+    deleteProduct: async(req, res) => {
+        try {
+            await Product.findByIdAndDelete(req.body._id);
+
+            res.send('Successfully deleted product data')
+        } catch(err) {
+            console.log("err",err)
+            res.status(500).send('Error deleting product data');
+        }
+    }
+
+
 }
