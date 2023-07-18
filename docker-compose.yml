@@ -1,0 +1,93 @@
+version: '3'
+services:
+  authserver:
+    build:
+      context: ./server/authserver
+      dockerfile: Dockerfile
+    ports:
+      - '4001:4001'
+    depends_on:
+      - mongodb
+      - redis
+      - rabbitmq
+    environment:
+      - DB_CONNECT=mongodb://mongodb:27017/storems_auth
+      - TOKEN_SECRET=NJD3402
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+      - PORT=4001
+    volumes:
+      - ./server/authserver:/app
+  productserver:
+    build:
+      context: ./server/productserver
+      dockerfile: Dockerfile
+    ports:
+      - '4002:4002'
+    depends_on:
+      - mongodb
+      - redis
+      - rabbitmq
+    environment:
+      - DB_CONNECT=mongodb://mongodb:27017/storems_product
+      - PORT=4002
+      - REDIS_PORT=6379
+      - REDIS_HOST=redis
+      - AMQP_BASE=amqp://rabbitmq
+    volumes: 
+      - ./server/productserver:/app
+  authevent:
+    build: 
+      context: ./events/user_registered
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+      - rabbitmq
+    environment:
+      - AMQP_CONNNECT=amqp://rabbitmq
+      - AUTH_DB=mongodb://mongodb:27017/storems_product
+      - ORDER_DB=mongodb://mongodb:27017/storems_order
+    volumes:
+      - ./events/user_registered:/app
+  productevent:
+    build: 
+      context: ./events/product_event
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+      - rabbitmq
+    environment:
+      - AMQP_CONNNECT=amqp://rabbitmq
+      - AUTH_DB=mongodb://mongodb:27017/storems_auth
+      - ORDER_DB=mongodb://mongodb:27017/storems_order
+    volumes:
+      - ./events/product_event:/app
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data:/data/db
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - '80:80'
+    depends_on:
+      - authserver
+      - productserver
+      - mongodb
+      - redis
+      - rabbitmq
