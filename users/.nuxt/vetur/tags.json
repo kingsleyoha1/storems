@@ -1,0 +1,32 @@
+{
+  "CartItem": {
+    "description": "Auto imported from components/CartItem.vue"
+  },
+  "AdminAddMenu": {
+    "description": "Auto imported from components/Admin/AddMenu.vue"
+  },
+  "AdminMenuItem": {
+    "description": "Auto imported from components/Admin/MenuItem.vue"
+  },
+  "AdminOrderedItems": {
+    "description": "Auto imported from components/Admin/OrderedItems.vue"
+  },
+  "AdminOrderItem": {
+    "description": "Auto imported from components/Admin/OrderItem.vue"
+  },
+  "AdminOrderRef": {
+    "description": "Auto imported from components/Admin/OrderRef.vue"
+  },
+  "CommonCartTabbar": {
+    "description": "Auto imported from components/Common/CartTabbar.vue"
+  },
+  "CommonHeaderLinks": {
+    "description": "Auto imported from components/Common/HeaderLinks.vue"
+  },
+  "FeedbacksFeedbackItem": {
+    "description": "Auto imported from components/Feedbacks/FeedbackItem.vue"
+  },
+  "SkeletonsProductCardSkt": {
+    "description": "Auto imported from components/Skeletons/ProductCardSkt.vue"
+  }
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\admin\\\\index.vue",
+    "chunkName": "pages/admin/index",
+    "_name": "_db5fb5d4"
+  },
+  {
+    "name": "cart",
+    "path": "/cart",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\cart.vue",
+    "chunkName": "pages/cart",
+    "_name": "_2ceca193"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\login.vue",
+    "chunkName": "pages/login",
+    "_name": "_001b3d06"
+  },
+  {
+    "name": "order-history",
+    "path": "/order-history",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\order-history.vue",
+    "chunkName": "pages/order-history",
+    "_name": "_ffc7389c"
+  },
+  {
+    "name": "signup",
+    "path": "/signup",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup",
+    "_name": "_4fa650cb"
+  },
+  {
+    "name": "admin-account",
+    "path": "/admin/account",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\admin\\\\account.vue",
+    "chunkName": "pages/admin/account",
+    "_name": "_615c65f1"
+  },
+  {
+    "name": "admin-orders",
+    "path": "/admin/orders",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\admin\\\\orders.vue",
+    "chunkName": "pages/admin/orders",
+    "_name": "_8825245e"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Owner\\\\Documents\\\\myprojects\\\\storems-lts\\\\users\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_367399ef"
+  }
+]
